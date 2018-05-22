@@ -77,6 +77,7 @@ async function appRender(ctx, locales = false, resolvedAssets = false) {
         });
         let assets;
         if (!resolvedAssets) {
+            // Assets name are found in `webpack-stats` file
             const assets_filename = ROOT + '/tmp/webpack-stats-dev.json';
             assets = require(assets_filename);
             delete require.cache[require.resolve(assets_filename)];

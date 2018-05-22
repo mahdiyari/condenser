@@ -269,7 +269,6 @@ if (env === 'production') {
 
 if (env !== 'test') {
     const appRender = require('./app_render');
-    // Get path to compiled
     app.use(function*() {
         yield appRender(this, supportedLocales, resolvedAssets);
         // if (app_router.dbStatus.ok) recordWebEvent(this, 'page_load');

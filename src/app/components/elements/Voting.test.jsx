@@ -2,19 +2,47 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { configure, shallow } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
 import { fromJS } from 'immutable';
 import renderer from 'react-test-renderer';
 import rootReducer from 'app/redux/RootReducer';
-
 import Voting from './Voting';
 
 configure({ adapter: new Adapter() });
 
 const store = createStore(rootReducer);
 
+const voteTestObj = fromJS({
+    stats: {
+        total_votes: 1,
+    },
+    max_accepted_payout: '999999 SBD',
+    percent_steem_dollars: 0,
+    pending_payout_value: '10 SBD',
+    cashout_time: '2018-03-30T10:00:00Z',
+});
+
+// If user is below the threshold, no prompt for voting weight appears, their vote has weight X, vote action is dispatched.
 describe('Voting', () => {
+    const wrapper = mount(
+        <IntlProvider locale="en">
+            <Voting
+                post="Test post"
+                vote={(w, p) => {}}
+                post_obj={voteTestObj}
+                price_per_steem={1}
+                sbd_print_rate={10000}
+                // Include store as prop because
+                store={store}
+            />
+        </IntlProvider>
+    );
+    const component = wrapper.instance();
+    it('should show vote button', () => {
+        expect(wrapper.find('a #upvote').length).toBe(1);
+    });
+
     it('should show all SP if percent_steem_dollars is 0', () => {
         const post_obj = fromJS({
             stats: {
@@ -98,4 +126,5 @@ describe('Voting', () => {
             '(2.50 SBD, 2.50 STEEM, 5.00 SP)'
         );
     });
+    it('should show the vote slider ');
 });

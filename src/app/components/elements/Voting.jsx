@@ -499,6 +499,7 @@ class Voting extends React.Component {
                                         ? tt('g.remove_vote')
                                         : tt('g.upvote')
                                 }
+                                id="upvote"
                             >
                                 {up}
                             </a>

@@ -23,7 +23,6 @@ const voteTestObj = fromJS({
     cashout_time: '2018-03-30T10:00:00Z',
 });
 
-// If user is below the threshold, no prompt for voting weight appears, their vote has weight X, vote action is dispatched.
 describe('Voting', () => {
     const wrapper = mount(
         <IntlProvider locale="en">
@@ -126,5 +125,4 @@ describe('Voting', () => {
             '(2.50 SBD, 2.50 STEEM, 5.00 SP)'
         );
     });
-    it('should show the vote slider ');
 });

@@ -315,7 +315,10 @@ class Voting extends React.Component {
         // Show pending payout amount for declined payment posts
         if (max_payout === 0) payout = pending_payout;
         const up = (
-            <Icon name={votingUpActive ? 'empty' : 'chevron-up-circle'} />
+            <Icon
+                id="upvote"
+                name={votingUpActive ? 'empty' : 'chevron-up-circle'}
+            />
         );
         const classUp =
             'Voting__button Voting__button-up' +

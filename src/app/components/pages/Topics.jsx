@@ -24,7 +24,7 @@ const Topics = ({
             tagOnly: `/trending/${currentTag}`,
             orderOnly: `/${currentOrder}`,
             tagWithOrder: `/${currentOrder}/${currentTag}`,
-            default: `/trending`,
+            default: `/hot`,
         };
         if (currentTag === 'feed') return opts['feed'];
         if (currentTag && currentOrder) return opts['tagWithOrder'];

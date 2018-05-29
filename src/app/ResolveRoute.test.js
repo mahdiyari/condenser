@@ -32,7 +32,7 @@ describe('routeRegex', () => {
 
 describe('resolveRoute', () => {
     const test_cases = [
-        ['/', { page: 'PostsIndex', params: ['trending'] }],
+        ['/', { page: 'PostsIndex', params: ['hot'] }],
         ['/about.html', { page: 'About' }],
         ['/faq.html', { page: 'Faq' }],
         ['/login.html', { page: 'Login' }],
